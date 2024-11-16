@@ -1,2 +1,2 @@
 # NBuzzer
-2024 EECS 159 Team NBuzzer Git Repepo 
+2024 EECS 159 Team NBuzzer Git Repo
