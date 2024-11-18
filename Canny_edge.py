@@ -8,27 +8,16 @@ testmode = 2 #to enable added features such as view and save on file
 def getChunks(l, n):
 
     """Yield successive n-sized chunks from l."""
-
     a = []
-
     for i in range(0, len(l), n):   
-
         a.append(l[i:i + n])
-
     return a
-
-
+    
 cap = cv2.VideoCapture(0)
-
 StepSize = 5
 
-
-
 while(1):
-
     _,frame = cap.read()
-
-    
     img = frame.copy()
     img_contour = frame.copy()
     blur = cv2.bilateralFilter(img,9,40,40)
@@ -44,7 +33,6 @@ while(1):
             if edges.item(i,j) == 255:
                 pixel = (j,i)
                 break
-
         EdgeArray.append(pixel)
 
     for x in range(len(EdgeArray)-1):
@@ -76,13 +64,12 @@ while(1):
 
         avg_of_chunk.append([avg_y,avg_x])
         cv2.line(frame, (int(img_w / 2), img_h), (avg_x, avg_y), (255, 0, 0),2)
-
+        
     print(avg_of_chunk)
     forwardEdge = avg_of_chunk[1]
 
     cv2.line(frame, (int(img_w / 2), img_h), (forwardEdge[1], forwardEdge[0]), (0, 255, 0), 3) 
     farthest_point = (min(avg_of_chunk))
-     
     y = (min(avg_of_chunk))
     
     if forwardEdge[0] > 250: #200 # >230 works better 
@@ -90,11 +77,9 @@ while(1):
        if y[1] < 310:
           direction = "left "
           print(direction)
-
        else: 
           direction = "right "
           print(direction)
-
     else:
        direction = "forward "
        print(direction)
